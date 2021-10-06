@@ -1,0 +1,29 @@
+<div class="card-body">
+  <h5 class="card-title">
+    {{ detail.ownerCardName }}
+    <i class="bi-trash text-danger" (click)="onDelete()"></i>
+  </h5>
+  <h6 class="card-subtitle mb-2 text-muted">
+    Card Number {{ detail.cardNumber }}
+  </h6>
+  <p class="card-subtitle">Expiration Date {{ detail.expirationDate }}</p>
+  <span>
+    Security Code {{ toggleSecurityCode ? detail.securityCode : "***" }}
+  </span>
+  <br />
+  <button
+    type="button"
+    (click)="toggleSecurity()"
+    class="btn btn-primary btn-sm"
+  >
+    {{ togglePasswordText }}
+  </button>
+  <button
+    style="margin-left: 20px"
+    type="button"
+    (click)="updateDetails()"
+    class="btn btn-primary btn-sm"
+  >
+    Update
+  </button>
+</div>
