@@ -18,7 +18,7 @@ export class PaymentFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm): void {
-    if (this.service.formData.paymentDetailId == 0) this.insertRecord(form);
+    if (this.service.formData.paymentDetailId == '') this.insertRecord(form);
     else this.updateRecord(form);
   }
 

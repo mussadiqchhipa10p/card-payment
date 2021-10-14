@@ -15,7 +15,7 @@ export class PaymentDetailService {
     }),
   };
 
-  private url: string = 'https://localhost:44365/api/PaymentDetail';
+  private url: string = 'http://localhost:8000/api/PaymentDetail';
   formData: PaymentDetail = new PaymentDetail();
   list: PaymentDetail[];
 
@@ -48,9 +48,9 @@ export class PaymentDetailService {
     );
   }
 
-  deleteDetails(id: number): Observable<PaymentDetail> {
+  deleteDetails(id: string): Observable<PaymentDetail> {
     const deleteUrl: string = `${this.url}/${id}`;
-
+    console.log(deleteUrl);
     return this.http.delete<PaymentDetail>(deleteUrl, this.httpOptions);
   }
 }

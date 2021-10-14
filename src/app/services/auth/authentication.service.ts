@@ -32,13 +32,19 @@ export class AuthenticationService {
   }
 
   public isLogin() {
-    const expire = localStorage.getItem('expiration');
-    //check for expiration
     if (localStorage.getItem('apitoken')) {
-      return true;
-    } else {
-      return false;
+      const expire = localStorage.getItem('expiration');
+      if (expire) {
+        let expirationDate = new Date(expire);
+        let currentDate = new Date(Date());
+        console.log(expirationDate, currentDate);
+        if (currentDate < expirationDate) {
+          return true;
+        }
+        return false;
+      }
     }
+    return false;
   }
 
   public logout() {
