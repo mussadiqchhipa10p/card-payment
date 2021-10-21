@@ -9,6 +9,10 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
+    path: 'payment',
+    component: PaymentDetailComponent,
+  },
+  {
     path: '',
     component: PaymentDetailComponent,
   },

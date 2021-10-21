@@ -1,3 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand">AnguAppli</a>
+  <div id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a
+          class="nav-link"
+          [routerLink]="['/payments']"
+          routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/payments']"
+          routerLinkActive="router-link-active"
+          >Payments</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+          >About</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-primary">
+  <!-- Copyright -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+    © 2021 Copyright:
+    <span class="text-reset fw-bold">AnguAppli</span>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
