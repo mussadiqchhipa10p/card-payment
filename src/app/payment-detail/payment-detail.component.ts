@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PaymentDetail } from '../payment-detail';
 import { PaymentDetailService } from '../services/payment-detail.service';
+import { globals } from '../globals';
+import { UiService } from '../ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-payment-detail',
@@ -10,10 +13,18 @@ import { PaymentDetailService } from '../services/payment-detail.service';
   styleUrls: ['./payment-detail.component.css'],
 })
 export class PaymentDetailComponent implements OnInit {
+  subscription = new Subscription();
+  showform: boolean = globals.isUpdateViaModal;
+
   constructor(
     public paymentDetailService: PaymentDetailService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    public uiService: UiService
+  ) {
+    this.subscription = uiService
+      .ontoggle()
+      .subscribe((value) => (this.showform = value));
+  }
 
   ngOnInit(): void {
     this.paymentDetailService.refreshList();

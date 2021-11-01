@@ -5,7 +5,7 @@
       <li class="nav-item active">
         <a
           class="nav-link"
-          [routerLink]="['/payments']"
+          [routerLink]="['/']"
           routerLinkActive="router-link-active"
           >Home</a
         >
@@ -13,7 +13,7 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['/payments']"
+          [routerLink]="['payments']"
           routerLinkActive="router-link-active"
           >Payments</a
         >
@@ -21,10 +21,18 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          [routerLink]="['/']"
+          [routerLink]="['about']"
           routerLinkActive="router-link-active"
           >About</a
         >
+      </li>
+      <li>
+        <button class="btn btn-info" (click)="toggleModal()">
+          {{ modalButtonText }}
+        </button>
+      </li>
+      <li *ngIf="uiService.showModal">
+        <button class="btn btn-info" (click)="AddNew()">New</button>
       </li>
     </ul>
   </div>
