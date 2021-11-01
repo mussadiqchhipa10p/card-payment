@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PaymentDetail } from 'src/app/payment-detail';
 import { PaymentDetailService } from 'src/app/services/payment-detail.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-payment-form',
@@ -10,9 +11,12 @@ import { PaymentDetailService } from 'src/app/services/payment-detail.service';
   styleUrls: ['./payment-form.component.css'],
 })
 export class PaymentFormComponent implements OnInit {
+  @Input() name: string;
+
   constructor(
     public service: PaymentDetailService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public activeModal: NgbActiveModal
   ) {}
 
   ngOnInit(): void {}
@@ -28,6 +32,7 @@ export class PaymentFormComponent implements OnInit {
         this.resetForm(form);
         this.service.refreshList();
         this.showMessage('submitted');
+        this.activeModal.close('Close click');
       },
       (err) => {
         console.log(err);
@@ -45,6 +50,7 @@ export class PaymentFormComponent implements OnInit {
         this.resetForm(form);
         this.service.refreshList();
         this.showMessage('Updated');
+        this.activeModal.close('Close click');
       },
       (err) => {
         console.log(err);
@@ -55,5 +61,10 @@ export class PaymentFormComponent implements OnInit {
   resetForm(form: NgForm) {
     form.form.reset();
     this.service.formData = new PaymentDetail();
+  }
+
+  onCancel(form: NgForm) {
+    this.resetForm(form);
+    this.activeModal.dismiss();
   }
 }

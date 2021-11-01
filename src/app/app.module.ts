@@ -4,6 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {
+  NgbModal,
+  NgbModule,
+  NgbActiveModal,
+} from '@ng-bootstrap/ng-bootstrap';
+
 import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +20,7 @@ import { PaymentItemComponent } from './payment-detail/payment-item/payment-item
 import { PaymentFormComponent } from './payment-detail/payment-form/payment-form.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
+import { AboutComponent } from './about/about.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +28,7 @@ import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
     PaymentItemComponent,
     PaymentFormComponent,
     LoginComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +37,7 @@ import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
     FormsModule,
     CommonModule,
     BrowserAnimationsModule,
+    NgbModule,
     ToastrModule.forRoot(),
   ],
   providers: [
@@ -37,6 +46,7 @@ import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
       useClass: HttpInterceptorInterceptor,
       multi: true,
     },
+    NgbActiveModal,
   ],
   bootstrap: [AppComponent],
 })
